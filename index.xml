@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tengmore</title>
+    <link>https://www.example.com/</link>
+    <description>Recent content on tengmore</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 22 Dec 2020 10:51:07 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.example.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Self Intro</title>
+      <link>https://www.example.com/self-intro/</link>
+      <pubDate>Tue, 22 Dec 2020 10:51:07 +0800</pubDate>
+      
+      <guid>https://www.example.com/self-intro/</guid>
+      <description>我是个死胖子</description>
+    </item>
+    
+    <item>
+      <title>First Commit</title>
+      <link>https://www.example.com/first/</link>
+      <pubDate>Tue, 22 Dec 2020 10:50:07 +0800</pubDate>
+      
+      <guid>https://www.example.com/first/</guid>
+      <description>Hello world!</description>
+    </item>
+    
+    <item>
+      <title>Azure Kinect配置VS环境并用OpenCV显示图像</title>
+      <link>https://www.example.com/ak-vs-opcv/</link>
+      <pubDate>Mon, 21 Dec 2020 20:28:13 +0800</pubDate>
+      
+      <guid>https://www.example.com/ak-vs-opcv/</guid>
+      <description>首先保证这三个软件都安装好了哈。
+一、配置Azure Kinect 打开VS的属性页-&amp;gt;配置属性-&amp;gt;VC++目录
+1、 将相机的头文件添加到包含目录
+2、 将相机的静态库文件添加到库目录
+3、 连接器-&amp;gt;输入-&amp;gt;附加依赖项
+将k4a.lib添加到附加依赖项
+以上相机就配置好了。
+二、Azure Kinect 显示图像（需要配置OpenCV环境） 先放代码
+（这里贴txt里的代码）
+查找设备个数（Azure Kinect最多支持六台相机同步工作）并打开设备。
+对相机参数设定，Azure Kinect可以支持多种分辨率的彩色和深度图，注意不同大小的图支持的帧数也不一样，可去官网查看。
+定义图像名称，注意Azure Kinect官方定义的图像格式是k4a::image类型。
+这是大家熟知的OpenCV的Mat图像类型，因为后续图像操作还是使用的OpenCV。
+获取相机图像。
+将获取的图像类型由k4a::image类型转换为Mat类型。
+熟悉的OpenCV显示图像，最后记得释放参数。
+第一次写，排版挺乱，若是看起来费劲多多包涵，若写的不对，欢迎大家批评指正。
+最后得感谢无雨森，这是我拿到Azure Kinect后感觉国内对Azure Kinect使用最棒的人，我从他帖子学到了很多，很多代码我都是在他代码基础上修改的，需要多一点他这样的大佬。
+https://my.oschina.net/u/4580379?tab=newest&amp;amp;catalogId=7033705
+源码 // Standard Library #include &amp;lt;array&amp;gt;#include &amp;lt;iostream&amp;gt;#include &amp;lt;string&amp;gt;#include &amp;lt;fstream&amp;gt;#include &amp;lt;conio.h&amp;gt;// OpenCV Header #include &amp;lt;opencv2/core.hpp&amp;gt;#include &amp;lt;opencv2/imgproc.hpp&amp;gt;#include &amp;lt;opencv2/highgui.hpp&amp;gt;#include &amp;#34;opencv2/opencv.hpp&amp;#34; #include&amp;lt;opencv2\highgui\highgui.hpp&amp;gt;#include&amp;lt;opencv2\imgproc\imgproc.hpp&amp;gt;#pragma comment(lib, &amp;#34;k4a.lib&amp;#34;) #include &amp;lt;stdio.h&amp;gt;#include &amp;lt;opencv2\highgui\highgui_c.h&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt; iostream&amp;gt;#include &amp;lt;stdlib.h&amp;gt;// Kinect for Windows SDK Header #include &amp;lt;k4a/k4a.h&amp;gt;#include &amp;lt;k4arecord/record.h&amp;gt;#include &amp;lt;k4arecord/playback.</description>
+    </item>
+    
+  </channel>
+</rss>

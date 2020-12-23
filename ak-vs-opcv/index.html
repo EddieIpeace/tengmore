@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <meta name="description" content="">
+
+    
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400&display=swap" rel="stylesheet" media="print" type="text/css" onload="this.media='all'">
+    
+
+    <title>
+      
+      
+         Azure Kinect配置VS环境并用OpenCV显示图像 
+      
+    </title>
+    <link rel="canonical" href="https://www.example.com/ak-vs-opcv/">
+
+    <style>
+  * {
+    border:0;
+    font:inherit;
+    font-size:100%;
+    vertical-align:baseline;
+    margin:0;
+    padding:0;
+    color: black;
+    text-decoration-skip: ink;
+  }
+
+  body {
+    font-family:'Open Sans', 'Myriad Pro', Myriad, sans-serif;
+    font-size:17px;
+    line-height:160%;
+    color:#1d1313;
+    max-width:700px;
+    margin:auto;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  a img {
+    border:none;
+  }
+
+  img {
+    margin: 10px auto 10px auto;
+    max-width: 100%;
+    display: block;
+  }
+
+  .left-justify { float: left; }
+  .right-justify { float:right; }
+
+  pre, code {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: #f7f7f7;
+  }
+
+  code {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+    word-wrap: normal;
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+  }
+
+  pre>code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+  }
+
+  pre code {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+  }
+
+  pre code::before,
+  pre code::after {
+    content: normal;
+  }
+
+  em,q,em,dfn {
+    font-style:italic;
+  }
+
+  .sans,html .gist .gist-file .gist-meta {
+    font-family:"Open Sans","Myriad Pro",Myriad,sans-serif;
+  }
+
+  .mono,pre,code,tt,p code,li code {
+    font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
+  }
+
+  .heading,.serif,h1,h2,h3 {
+    font-family:"Old Standard TT",serif;
+  }
+
+  strong {
+    font-weight:600;
+  }
+
+  q:before {
+    content:"\201C";
+  }
+
+  q:after {
+    content:"\201D";
+  }
+
+  del,s {
+    text-decoration:line-through;
+  }
+
+  blockquote {
+    font-family:"Old Standard TT",serif;
+    text-align:center;
+    padding:50px;
+  }
+
+  blockquote p {
+    display:inline-block;
+    font-style:italic;
+  }
+
+  blockquote:before,blockquote:after {
+    font-family:"Old Standard TT",serif;
+    content:'\201C';
+    font-size:35px;
+    color:#403c3b;
+  }
+
+  blockquote:after {
+    content:'\201D';
+  }
+
+  hr {
+    width:40%;
+    height: 1px;
+    background:#403c3b;
+    margin: 25px auto;
+  }
+
+  h1 {
+    font-size:35px;
+  }
+
+  h2 {
+    font-size:28px;
+  }
+
+  h3 {
+    font-size:22px;
+    margin-top:18px;
+  }
+
+  h1 a,h2 a,h3 a {
+    text-decoration:none;
+  }
+
+  h1,h2 {
+    margin-top:28px;
+  }
+
+  #sub-header, .date {
+    color:#403c3b;
+    font-size:13px;
+  }
+
+  #sub-header {
+    margin: 0 4px;
+  }
+
+  #nav h1 a {
+    font-size:35px;
+    color:#1d1313;
+    line-height:120%;
+  }
+
+  .posts_listing a,#nav a {
+    text-decoration: none;
+  }
+
+  li {
+    margin-left: 20px;
+  }
+
+  ul li {
+    margin-left: 5px;
+  }
+
+  ul li {
+    list-style-type: none;
+  }
+  ul li:before {
+    content:"\00BB \0020";
+  }
+
+  #nav ul li:before, .posts_listing li:before {
+    content:'';
+    margin-right:0;
+  }
+
+  #content {
+    text-align:left;
+    width:100%;
+    font-size:15px;
+    padding:60px 0 80px;
+  }
+
+  #content h1,#content h2 {
+    margin-bottom:5px;
+  }
+
+  #content h2 {
+    font-size:25px;
+  }
+
+  #content .entry-content {
+    margin-top:15px;
+  }
+
+  #content .date {
+    margin-left:3px;
+  }
+
+  #content h1 {
+    font-size:30px;
+  }
+
+  .highlight {
+    margin: 10px 0;
+  }
+
+  .posts_listing {
+    margin:0 0 50px;
+  }
+
+  .posts_listing li {
+    margin:0 0 25px 15px;
+  }
+
+  .posts_listing li a:hover,#nav a:hover {
+    text-decoration: underline;
+  }
+
+  #nav {
+    text-align:center;
+    position:static;
+    margin-top:60px;
+  }
+
+  #nav ul {
+    display: table;
+    margin: 8px auto 0 auto;
+  }
+
+  #nav li {
+    list-style-type:none;
+    display:table-cell;
+    font-size:15px;
+    padding: 0 20px;
+  }
+
+  #links {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0 0 0;
+  }
+
+  #links :nth-child(1) {
+    margin-right:0.5em;;
+  }
+
+  #links :nth-child(2) {
+    margin-left:0.5em;;
+  }
+
+  #not-found {
+    text-align: center;
+  }
+
+  #not-found a {
+    font-family:"Old Standard TT",serif;
+    font-size: 200px;
+    text-decoration: none;
+    display: inline-block;
+    padding-top: 225px;
+  }
+
+  @media (max-width: 750px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:28px;
+    }
+
+    #nav li {
+      font-size:13px;
+      padding: 0 15px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:50px;
+      font-size:14px;
+    }
+
+    #content h1 {
+      font-size:25px;
+    }
+
+    #content h2 {
+      font-size:22px;
+    }
+
+    .posts_listing li div {
+      font-size:12px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:22px;
+    }
+
+    #nav li {
+      font-size:12px;
+      padding: 0 10px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:20px;
+      font-size:12px;
+    }
+
+    #content h1 {
+      font-size:20px;
+    }
+
+    #content h2 {
+      font-size:18px;
+    }
+
+    .posts_listing li div{
+      font-size:12px;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    *, #nav h1 a {
+      color: #FDFDFD;
+    }
+
+    body {
+      background: #121212;
+    }
+
+    pre, code {
+      background-color: #262626;
+    }
+
+    #sub-header, .date {
+      color: #BABABA;
+    }
+
+    hr {
+      background: #EBEBEB;
+    }
+  }
+</style>
+
+
+    </head>
+
+  <body>
+    <section id=nav>
+      <h1><a href="https://www.example.com/">tengmore</a></h1>
+      <ul>
+        
+      </ul>
+    </section>
+
+
+<section id=content>
+  <h1> Azure Kinect配置VS环境并用OpenCV显示图像 </h1>
+
+  
+    <div id=sub-header>
+      December 2020 · 1 minute read
+    </div>
+  
+
+  <div class="entry-content">
+    
+
+<p>首先保证这三个软件都安装好了哈。</p>
+
+<h2 id="一-配置azure-kinect">一、配置Azure Kinect</h2>
+
+<p>打开VS的属性页-&gt;配置属性-&gt;VC++目录</p>
+
+<p><img src="https://www.example.com/images/image-20201221200500962.png" alt="" /></p>
+
+<p>1、 将相机的头文件添加到包含目录</p>
+
+<p><img src="https://www.example.com/images/image-20201221200428889.png" alt="" /></p>
+
+<p>2、 将相机的静态库文件添加到库目录</p>
+
+<p><img src="https://www.example.com/images/image-20201221200440100.png" alt="" /></p>
+
+<p>3、 连接器-&gt;输入-&gt;附加依赖项</p>
+
+<p>将k4a.lib添加到附加依赖项</p>
+
+<p><img src="https://www.example.com/images/image-20201221200525516.png" alt="" /></p>
+
+<p>以上相机就配置好了。</p>
+
+<h2 id="二-azure-kinect-显示图像-需要配置opencv环境">二、Azure Kinect 显示图像（需要配置OpenCV环境）</h2>
+
+<p>先放代码</p>
+
+<p>（这里贴txt里的代码）</p>
+
+<p><img src="https://www.example.com/images/image-20201221200607303.png" alt="" /></p>
+
+<p>查找设备个数（Azure Kinect最多支持六台相机同步工作）并打开设备。</p>
+
+<p><img src="https://www.example.com/images/image-20201221200640270.png" alt="" /></p>
+
+<p>对相机参数设定，Azure Kinect可以支持多种分辨率的彩色和深度图，注意不同大小的图支持的帧数也不一样，可去官网查看。</p>
+
+<p><img src="https://www.example.com/images/image-20201221200704246.png" alt="" /></p>
+
+<p>定义图像名称，注意Azure Kinect官方定义的图像格式是k4a::image类型。</p>
+
+<p><img src="https://www.example.com/images/image-20201221200711004.png" alt="" /></p>
+
+<p>这是大家熟知的OpenCV的Mat图像类型，因为后续图像操作还是使用的OpenCV。</p>
+
+<p><img src="https://www.example.com/images/image-20201221200717598.png" alt="" /></p>
+
+<p>获取相机图像。</p>
+
+<p><img src="https://www.example.com/images/image-20201221200726903.png" alt="" /></p>
+
+<p>将获取的图像类型由k4a::image类型转换为Mat类型。</p>
+
+<p><img src="https://www.example.com/images/image-20201221200732376.png" alt="" /></p>
+
+<p>熟悉的OpenCV显示图像，最后记得释放参数。</p>
+
+<p><img src="https://www.example.com/images/image-20201221200739663.png" alt="" /></p>
+
+<p>第一次写，排版挺乱，若是看起来费劲多多包涵，若写的不对，欢迎大家批评指正。</p>
+
+<p>最后得感谢无雨森，这是我拿到Azure Kinect后感觉国内对Azure Kinect使用最棒的人，我从他帖子学到了很多，很多代码我都是在他代码基础上修改的，需要多一点他这样的大佬。</p>
+
+<p><a href="https://my.oschina.net/u/4580379?tab=newest&amp;catalogId=7033705">https://my.oschina.net/u/4580379?tab=newest&amp;catalogId=7033705</a></p>
+
+<p><img src="https://www.example.com/images/image-20201221200751789.png" alt="" /></p>
+
+<h2 id="源码">源码</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="font-style:italic">// Standard Library
+</span><span style="font-style:italic"></span><span style="">#include</span> <span style="">&lt;array&gt;</span><span style="">
+</span><span style="">#include</span> <span style="">&lt;iostream&gt;</span><span style="">
+</span><span style="">#include</span> <span style="">&lt;string&gt;</span><span style="">
+</span><span style="">#include</span> <span style="">&lt;fstream&gt;</span><span style="">
+</span><span style="">#include</span> <span style="">&lt;conio.h&gt;</span><span style="">
+</span><span style=""></span><span style="font-style:italic">// OpenCV Header
+</span><span style="font-style:italic"></span><span style="">#include</span> <span style="">&lt;opencv2/core.hpp&gt;</span><span style="">
+</span><span style="">#include</span> <span style="">&lt;opencv2/imgproc.hpp&gt;</span><span style="">
+</span><span style="">#include</span> <span style="">&lt;opencv2/highgui.hpp&gt;</span><span style="">
+</span><span style="">#include</span> <span style="">&#34;opencv2/opencv.hpp&#34;  </span><span style="">
+</span><span style="">#include</span><span style="">&lt;opencv2\highgui\highgui.hpp&gt;</span><span style="">
+</span><span style="">#include</span><span style="">&lt;opencv2\imgproc\imgproc.hpp&gt;</span><span style="">
+</span><span style="">#pragma comment(lib, &#34;k4a.lib&#34;)
+</span><span style="">#include</span> <span style="">&lt;stdio.h&gt;</span><span style="">
+</span><span style="">#include</span> <span style="">&lt;opencv2\highgui\highgui_c.h&gt;      </span><span style="">
+</span><span style="">#include</span> <span style="">&lt;vector&gt;   </span><span style="">
+</span><span style="">#include</span> <span style="">&lt; iostream&gt;</span><span style="">
+</span><span style="">#include</span> <span style="">&lt;stdlib.h&gt;</span><span style="">
+</span><span style=""></span><span style="font-style:italic">// Kinect for Windows SDK Header
+</span><span style="font-style:italic"></span><span style="">#include</span> <span style="">&lt;k4a/k4a.h&gt;</span><span style="">
+</span><span style="">#include</span> <span style="">&lt;k4arecord/record.h&gt;</span><span style="">
+</span><span style="">#include</span> <span style="">&lt;k4arecord/playback.h&gt;</span><span style="">
+</span><span style="">#include</span> <span style="">&lt;k4a/k4a.hpp&gt;</span><span style="">
+</span><span style="">#include</span> <span style="">&lt; cstdlib&gt;</span><span style="">
+</span><span style=""></span>
+<span style="font-weight:bold">using</span> <span style="font-weight:bold">namespace</span> std;
+<span style="font-weight:bold">using</span> <span style="font-weight:bold">namespace</span> cv;
+
+<span style="">int</span> main(<span style="">int</span> argc, <span style="">char</span>** argv)
+{
+	k4a::capture capture;
+	<span style="font-weight:bold">const</span> uint32_t device_count = k4a::device::get_installed_count();<span style="font-style:italic">//查看设备个数
+</span><span style="font-style:italic"></span>	<span style="font-weight:bold">if</span> (device_count == 0)
+	{
+		printf(<span style="font-style:italic">&#34;No K4A devices found</span><span style="font-weight:bold;font-style:italic">\n</span><span style="font-style:italic">&#34;</span>);
+		<span style="font-weight:bold">return</span> 0;
+	}
+
+	k4a::device device = k4a::device::open(K4A_DEVICE_DEFAULT);
+
+	k4a_device_configuration_t config = K4A_DEVICE_CONFIG_INIT_DISABLE_ALL;	<span style="font-style:italic">//设定设备参数
+</span><span style="font-style:italic"></span>	config.color_format = K4A_IMAGE_FORMAT_COLOR_BGRA32;
+	config.color_resolution = K4A_COLOR_RESOLUTION_1080P;
+	config.depth_mode = K4A_DEPTH_MODE_WFOV_UNBINNED;
+	config.camera_fps = K4A_FRAMES_PER_SECOND_5;
+	config.synchronized_images_only = true;
+
+	device.start_cameras(&amp;config);
+
+	k4a::image rgbImage;
+	k4a::image depthImage;
+	k4a::image irImage;
+
+	cv::Mat color_frame;
+	cv::Mat depth_frame;
+	cv::Mat ir_frame;
+
+	<span style="font-weight:bold">while</span> (1)
+	{
+
+		<span style="font-weight:bold">if</span> (device.get_capture(&amp;capture, std::chrono::milliseconds(0)))
+		{
+
+			rgbImage = capture.get_color_image();
+			depthImage = capture.get_depth_image();
+			irImage = capture.get_ir_image();
+
+			color_frame = cv::Mat(rgbImage.get_height_pixels(), rgbImage.get_width_pixels(), CV_8UC4, rgbImage.get_buffer());
+			depth_frame = cv::Mat(depthImage.get_height_pixels(), depthImage.get_width_pixels(), CV_16U, depthImage.get_buffer());
+			ir_frame = cv::Mat(irImage.get_height_pixels(), irImage.get_width_pixels(), CV_16UC1, irImage.get_buffer());
+
+			cv::imshow(<span style="font-style:italic">&#34;color&#34;</span>, color_frame);
+			cv::imshow(<span style="font-style:italic">&#34;depth&#34;</span>, depth_frame);
+			cv::imshow(<span style="font-style:italic">&#34;ir&#34;</span>, ir_frame);
+	
+			color_frame.release();
+			depth_frame.release();
+			ir_frame.release();
+
+			capture.reset();
+			<span style="font-weight:bold">if</span> (waitKey(1) == 27)
+				<span style="font-weight:bold">break</span>;
+		}
+	}
+	cv::destroyAllWindows();
+	device.close();
+
+	<span style="font-weight:bold">return</span> 0;
+
+}
+</code></pre></div>
+  </div>
+
+  <div id=links>
+    
+    
+  </div>
+</section>
+
+  
+</body>
+</html>
+
+
+
