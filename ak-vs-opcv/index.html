@@ -18,7 +18,7 @@
          Azure Kinect配置VS环境并用OpenCV显示图像 
       
     </title>
-    <link rel="canonical" href="https://www.example.com/ak-vs-opcv/">
+    <link rel="canonical" href="https://eddieipeace.github.io/tengmore/ak-vs-opcv/">
 
     <style>
   * {
@@ -408,7 +408,7 @@
 
   <body>
     <section id=nav>
-      <h1><a href="https://www.example.com/">tengmore</a></h1>
+      <h1><a href="https://eddieipeace.github.io/tengmore/">tengmore</a></h1>
       <ul>
         
       </ul>
@@ -433,21 +433,21 @@
 
 <p>打开VS的属性页-&gt;配置属性-&gt;VC++目录</p>
 
-<p><img src="https://www.example.com/images/image-20201221200500962.png" alt="" /></p>
+<p><img src="https://eddieipeace.github.io/tengmore/images/image-20201221200500962.png" alt="" /></p>
 
 <p>1、 将相机的头文件添加到包含目录</p>
 
-<p><img src="https://www.example.com/images/image-20201221200428889.png" alt="" /></p>
+<p><img src="https://eddieipeace.github.io/tengmore/images/image-20201221200428889.png" alt="" /></p>
 
 <p>2、 将相机的静态库文件添加到库目录</p>
 
-<p><img src="https://www.example.com/images/image-20201221200440100.png" alt="" /></p>
+<p><img src="https://eddieipeace.github.io/tengmore/images/image-20201221200440100.png" alt="" /></p>
 
 <p>3、 连接器-&gt;输入-&gt;附加依赖项</p>
 
 <p>将k4a.lib添加到附加依赖项</p>
 
-<p><img src="https://www.example.com/images/image-20201221200525516.png" alt="" /></p>
+<p><img src="https://eddieipeace.github.io/tengmore/images/image-20201221200525516.png" alt="" /></p>
 
 <p>以上相机就配置好了。</p>
 
@@ -457,35 +457,35 @@
 
 <p>（这里贴txt里的代码）</p>
 
-<p><img src="https://www.example.com/images/image-20201221200607303.png" alt="" /></p>
+<p><img src="https://eddieipeace.github.io/tengmore/images/image-20201221200607303.png" alt="" /></p>
 
 <p>查找设备个数（Azure Kinect最多支持六台相机同步工作）并打开设备。</p>
 
-<p><img src="https://www.example.com/images/image-20201221200640270.png" alt="" /></p>
+<p><img src="https://eddieipeace.github.io/tengmore/images/image-20201221200640270.png" alt="" /></p>
 
 <p>对相机参数设定，Azure Kinect可以支持多种分辨率的彩色和深度图，注意不同大小的图支持的帧数也不一样，可去官网查看。</p>
 
-<p><img src="https://www.example.com/images/image-20201221200704246.png" alt="" /></p>
+<p><img src="https://eddieipeace.github.io/tengmore/images/image-20201221200704246.png" alt="" /></p>
 
 <p>定义图像名称，注意Azure Kinect官方定义的图像格式是k4a::image类型。</p>
 
-<p><img src="https://www.example.com/images/image-20201221200711004.png" alt="" /></p>
+<p><img src="https://eddieipeace.github.io/tengmore/images/image-20201221200711004.png" alt="" /></p>
 
 <p>这是大家熟知的OpenCV的Mat图像类型，因为后续图像操作还是使用的OpenCV。</p>
 
-<p><img src="https://www.example.com/images/image-20201221200717598.png" alt="" /></p>
+<p><img src="https://eddieipeace.github.io/tengmore/images/image-20201221200717598.png" alt="" /></p>
 
 <p>获取相机图像。</p>
 
-<p><img src="https://www.example.com/images/image-20201221200726903.png" alt="" /></p>
+<p><img src="https://eddieipeace.github.io/tengmore/images/image-20201221200726903.png" alt="" /></p>
 
 <p>将获取的图像类型由k4a::image类型转换为Mat类型。</p>
 
-<p><img src="https://www.example.com/images/image-20201221200732376.png" alt="" /></p>
+<p><img src="https://eddieipeace.github.io/tengmore/images/image-20201221200732376.png" alt="" /></p>
 
 <p>熟悉的OpenCV显示图像，最后记得释放参数。</p>
 
-<p><img src="https://www.example.com/images/image-20201221200739663.png" alt="" /></p>
+<p><img src="https://eddieipeace.github.io/tengmore/images/image-20201221200739663.png" alt="" /></p>
 
 <p>第一次写，排版挺乱，若是看起来费劲多多包涵，若写的不对，欢迎大家批评指正。</p>
 
@@ -493,7 +493,7 @@
 
 <p><a href="https://my.oschina.net/u/4580379?tab=newest&amp;catalogId=7033705">https://my.oschina.net/u/4580379?tab=newest&amp;catalogId=7033705</a></p>
 
-<p><img src="https://www.example.com/images/image-20201221200751789.png" alt="" /></p>
+<p><img src="https://eddieipeace.github.io/tengmore/images/image-20201221200751789.png" alt="" /></p>
 
 <h2 id="源码">源码</h2>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="font-style:italic">// Standard Library

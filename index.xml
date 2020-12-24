@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tengmore</title>
-    <link>https://www.example.com/</link>
+    <link>https://eddieipeace.github.io/tengmore/</link>
     <description>Recent content on tengmore</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 22 Dec 2020 10:51:07 +0800</lastBuildDate>
     
-	<atom:link href="https://www.example.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://eddieipeace.github.io/tengmore/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Self Intro</title>
-      <link>https://www.example.com/self-intro/</link>
+      <link>https://eddieipeace.github.io/tengmore/self-intro/</link>
       <pubDate>Tue, 22 Dec 2020 10:51:07 +0800</pubDate>
       
-      <guid>https://www.example.com/self-intro/</guid>
+      <guid>https://eddieipeace.github.io/tengmore/self-intro/</guid>
       <description>我是个死胖子</description>
     </item>
     
     <item>
       <title>First Commit</title>
-      <link>https://www.example.com/first/</link>
+      <link>https://eddieipeace.github.io/tengmore/first/</link>
       <pubDate>Tue, 22 Dec 2020 10:50:07 +0800</pubDate>
       
-      <guid>https://www.example.com/first/</guid>
+      <guid>https://eddieipeace.github.io/tengmore/first/</guid>
       <description>Hello world!</description>
     </item>
     
     <item>
       <title>Azure Kinect配置VS环境并用OpenCV显示图像</title>
-      <link>https://www.example.com/ak-vs-opcv/</link>
+      <link>https://eddieipeace.github.io/tengmore/ak-vs-opcv/</link>
       <pubDate>Mon, 21 Dec 2020 20:28:13 +0800</pubDate>
       
-      <guid>https://www.example.com/ak-vs-opcv/</guid>
+      <guid>https://eddieipeace.github.io/tengmore/ak-vs-opcv/</guid>
       <description>首先保证这三个软件都安装好了哈。
 一、配置Azure Kinect 打开VS的属性页-&amp;gt;配置属性-&amp;gt;VC++目录
 1、 将相机的头文件添加到包含目录
